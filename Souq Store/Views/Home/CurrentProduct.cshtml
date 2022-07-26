@@ -1,0 +1,50 @@
+﻿@model Product
+    
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper">
+                        <div class="swiper-wrapper align-items-center">
+
+                            @foreach (var item in Model.ProductImages)
+                            {
+                                <div class="swiper-slide">
+                                    <img src="~/@item.ProductImage" alt="">
+                                </div>
+                            }
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>Product information</h3>
+                        <ul>
+                            <li><strong>Category</strong>: @Model.Category.Name</li>
+                            <li><strong>Client</strong>: @Model.SupplierName</li>
+                            <li><strong>Price</strong>: $@Model.Price</li>
+                            <li><strong>Added On</strong>: @Model.EntryDate</li>
+                            <li><strong>Product Review</strong>: <a href="@Model.ReviewUrl" target="_blank">@Model.ReviewUrl</a></li>
+                        </ul>
+                        <button class="btn btn-danger">
+                             Add To Cart
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                    <div class="portfolio-description">
+                        <h2>@Model.Name</h2>
+                        <p>
+                            @Model.Description.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>

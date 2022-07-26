@@ -1,0 +1,193 @@
+﻿@model IndexViewModel
+
+
+<div class="container mt-5 mb-5">
+
+    <form asp-action="CategorySearch" method="post">
+        <div class="row">
+
+            <input type="submit" value="Search" class="col-sm-2 btn btn-primary" />
+
+            <div class="col-sm-10">
+                <input type="text" name="term" style="text-align:right" required class="form-control" placeholder="Search" />
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+<section id="portfolio" class="portfolio">
+
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Categories</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row portfolio-container">
+
+            @foreach (var item in Model.Categories)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img src="@item.Photo" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>@item.Name</h4>
+                            <p>@item.Description</p>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="/Home/ProductsByCategoryId/@item.Id" title="Related Products"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<section id="testimonials" class="testimonials section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>FeedBack From Our Clients</h2>
+            <p>You can Rate Us From Our Reviews</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="swiper-wrapper">
+
+                @foreach (var item in Model.reviews)
+                {
+                    <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="1">
+                        <div class="testimonial-item">
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                @item.Message
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+
+                            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+
+                            <h3>@item.Name</h3>
+
+                            <h4>@item.Subject</h4>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+</section>
+<section id="pricing" class="pricing section-bg" style="background:white">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Latest Products</h2>
+            <p>New Products Added Latest.</p>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model.LatestProducts)
+            {
+             
+                    <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+
+                        <div class="box featured">
+                            <h3>@item.Name</h3>
+                            <h4><sup>$</sup>@item.Price</h4>
+                            <img src="@item.Photo" width="200" style="max-height:200px;min-height:200px" />
+
+                            <div class="btn-wrap">
+                                <a href="/Home/CurrentProduct/@item.Id" class="btn-buy">Details</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+            }
+            </div>
+        </div>
+</section>
+
+<section id="contact" class="contact section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Keep your Review Here To Keep In Touch With You Later.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="info-box mb-4">
+                    <i class="bx bx-map"></i>
+                    <h3>Our Address</h3>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-box  mb-4">
+                    <a href="mailto:ahmedeissawy2020@gmail.com" target="_blank">
+                        <i class="bx bx-envelope"></i>
+                    </a>
+                    <h3>Email Us</h3>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-box  mb-4">
+                    <a href="https://api.whatsapp.com/send?phone=01062432322" target="_blank">
+                        <i class="bx bx-phone-call"></i>
+                    </a>
+                    <h3>Call Us</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-6 ">
+                <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54837.47601582105!2d31.034376074549506!3d30.79303509358727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7c95daafcf035%3A0x7421820c5e8cae42!2z2LfZhti32KfYjCDYt9mG2LfYpyAo2YLYs9mFIDIp2Iwg2YXYsdmD2LIg2LfZhti32KfYjCDYp9mE2LrYsdio2YrYqQ!5e0!3m2!1sar!2seg!4v1658665756040!5m2!1sar!2seg" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+            </div>
+
+            <div class="col-lg-6">
+                <form asp-action="ReviewMessages" asp-controller="Home" method="post" role="form" class="form">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="Name" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="Email" id="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="Subject" id="subject" placeholder="Subject" required>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="Message" rows="5" placeholder="Message" required></textarea>
+                    </div>
+
+
+                    <div class="text-center" style="margin-top:20px">
+                        <input class="btn btn-primary" type="submit" value="Send Message" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section>

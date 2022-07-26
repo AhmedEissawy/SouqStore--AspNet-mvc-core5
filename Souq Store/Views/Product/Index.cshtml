@@ -1,0 +1,47 @@
+﻿@model ProductViewModel
+
+
+
+
+    <form asp-action="Create" asp-controller="Product" method="post" role="form" class="form">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label asp-for="CatName" class="control-label"></label>
+                <select asp-for="CatName" class="form-control">
+                    <option>Choose Category</option>
+                    @foreach (var item in ViewBag.categories)
+	                {
+		               <option value="@item.Id">@item.Name</option>
+	                }
+                </select>
+                <span asp-validation-for="CatName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6 form-group mt-3 mt-md-0">
+               <label asp-for="ProductName" class="control-label"></label>
+               <input type="text" asp-for="ProductName" class="form-control" placeholder="Product Name">
+               <span asp-validation-for="ProductName" class="text-danger"></span>
+         </div>
+        
+        <div class="form-group mt-3">
+            <label asp-for="ProductPrice" class="control-label"></label>
+            <input type="text" asp-for="ProductPrice" class="form-control" placeholder="Product Price">
+            <span asp-validation-for="ProductPrice" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-3">
+            <label asp-for="Productquantity" class="control-label"></label>
+            <input type="text" asp-for="Productquantity" class="form-control" placeholder="Product Quantity">
+            <span asp-validation-for="Productquantity" class="text-danger"></span>
+        </div>
+
+
+        <div class="text-center" style="margin-top:20px">
+            <input class="btn btn-primary" type="submit" value="Create Product" />
+        </div>
+    </form>
+
+ 
